@@ -12,7 +12,8 @@ class SuperheroController extends Controller
     #[NoReturn]
     public function index (Request $request)
     {
-//        dd($request->filter);
-        return Superhero::all();
+        return Superhero::filter($request->filter)
+            ->paginate()
+            ->toJson();
     }
 }
